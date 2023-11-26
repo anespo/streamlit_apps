@@ -3,17 +3,18 @@ import os
 
 import openai
 import streamlit as st
-from dotenv import load_dotenv
 
 from aiconfig import AIConfigRuntime
 
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = st.secrets['OPENAI_API_KEY']
+
+path = os.path.dirname(__file__)
+my_file = path+'/assistant_aiconfig.json'
+config = AIConfigRuntime.load(my_file)
+
 
 # Get assistant response based on user prompt (prompt routing)
 async def assistant_response(prompt):
-    config = AIConfigRuntime.load("assistant_aiconfig.json")
-
     params = {"student_question": prompt}
 
     router_prompt_completion = await config.run("router", params)
