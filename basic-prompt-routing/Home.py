@@ -5,13 +5,6 @@ import streamlit as st
 from aiconfig import AIConfigRuntime, InferenceOptions
 
 # Streamlit Setup
-st.set_page_config(
-    page_title="GPT4 Prompt Routing Demo 🔀",
-    page_icon="㏐",
-    layout="centered",
-    initial_sidebar_state="auto",
-    menu_items=None,
-)
 st.title("GPT4 Prompt Routing Demo 🔀")
 st.subheader("Powered by AIConfig ⚙️")
 st.markdown("This is a demo of prompt routing with AIConfig ([Github](https://github.com/lastmile-ai/aiconfig)). Instructions:")
