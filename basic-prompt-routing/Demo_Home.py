@@ -103,5 +103,6 @@ if openai_api_key:
             )
 
             response = f"AI: {chat_response}"
+            message_placeholder.markdown(response)
 
         st.session_state.messages.append({"role": "assistant", "content": response})
