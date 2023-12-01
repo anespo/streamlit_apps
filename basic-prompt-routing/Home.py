@@ -18,17 +18,13 @@ st.markdown("This is a demo of prompt routing with AIConfig ([Github](https://gi
 
 st.text(
     """
-    1. Ask question with a code snippet. Remember to always add code snippet or specify language. 
-    2. Router determines coding language and responds with respective prompt template.
+    1. Ask question with a code snippet. Remember to always add a code snippet or specify language. 
+    2. Router determines coding language and responds with respective prompt template. 
+    For the demo, only python, javascript, java prompt templates were created. 
     """
 )
-st.markdown(
-    """
-    Try this: `How do I filter a list of numbers to only even numbers in javascript?`
-    """
-)
+st.markdown("Try this: `How do I filter a list of numbers to only even numbers in javascript?`")
 openai_api_key = st.text_input('First, enter you OpenAI API Key. Uses GPT4.', type='password')
-
 
 
 # Get assistant response based on user prompt (prompt routing)
@@ -60,15 +56,13 @@ if openai_api_key:
     my_file = path+'/assistant_aiconfig.json'
     config = AIConfigRuntime.load(my_file)
 
-    # Chat setup
+    # Chat Setup
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-
-    
 
     if prompt := st.chat_input("Ask a coding question"):
         st.chat_message("user").markdown(prompt)
