@@ -19,9 +19,9 @@ st.markdown(
     """
 )
 
-file = "../assistant_aiconfig.json"
+file = "../basic-prompt-routing/assistant_aiconfig.json"
 absolute_path = os.path.abspath(file)
 
-code = open(path, 'r').read()
+code = open(absolute_path, 'r').read()
 
 st.code(code, language='json')
