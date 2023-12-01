@@ -19,7 +19,7 @@ st.markdown(
     """
 )
 
-file = "../basic-prompt-routing/assistant_aiconfig.json"
+file = "../streamlit_apps/basic-prompt-routing/assistant_aiconfig.json"
 absolute_path = os.path.abspath(file)
 
 code = open(absolute_path, 'r').read()
