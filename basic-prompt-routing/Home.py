@@ -6,13 +6,13 @@ from aiconfig import AIConfigRuntime, InferenceOptions
 
 # Streamlit Setup
 st.set_page_config(
-    page_title="AI Coding Assistant 👩‍💻",
+    page_title="GPT4 Prompt Routing Demo 🔀",
     page_icon="㏐",
     layout="centered",
     initial_sidebar_state="auto",
     menu_items=None,
 )
-st.title("AI Coding Assistant 👩‍💻")
+st.title("GPT4 Prompt Routing Demo 🔀")
 st.subheader("Powered by AIConfig ⚙️")
 st.markdown("This is a demo of prompt routing with AIConfig ([Github](https://github.com/lastmile-ai/aiconfig)). Instructions:")
 
@@ -27,7 +27,8 @@ st.markdown(
     Try this: `How do I filter a list of numbers to only even numbers in javascript?`
     """
 )
-openai_api_key = st.text_input('First, enter you OpenAI API Key. Assistant uses GPT4', type='password')
+openai_api_key = st.text_input('First, enter you OpenAI API Key. Uses GPT4.', type='password')
+
 
 
 # Get assistant response based on user prompt (prompt routing)
