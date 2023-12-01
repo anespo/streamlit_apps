@@ -1,19 +1,18 @@
-# Basic Prompting Routing - AI Teaching Assistant
+# GPT4 Prompt Routing Demo
 
-This demo shows prompt routing with AIConfig. We used streamlit to host the app so you can interact with the assistant!
+This streamlit app shows prompt routing with AIConfig.
+Check out AIConfig here: https://github.com/lastmile-ai/aiconfig
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/81494782/282203473-f779feb6-339d-4331-9aed-1761b845100a.png)
+Instructions:
+Go to https://basic-prompt-routing.streamlit.app/. 
 
-### How does it work?
+1. Ask question with a code snippet. Try this: How do I filter a list of numbers to only even numbers in javascript?
+2. Router determines coding language and responds with respective prompt template.
 
-The user asks a question. The LLM decides the topic as math, physics, or general. Based on the topic, the LLM selects a different "assistant" to respond. These assistants have different system prompts and respond with varying introductions and style of response.
+What is AIConfig? 
+AIConfig saves prompts, models and model parameters as source-controlled configs. 
+This is your generative AI artifact that can easily be shared across any application.
+Use our SDK to connect an AIConfig to your application code. The separation of the generative
+AI components from your application code reduces complexity, increase iteration, and promotes
+better collaboration.
 
-### Setup with AIConfig
-
-- `create_config.py` - create an AIConfig for the prompts, models, and model parameters to be used for the different assistants.
-- `assistant_aiconfig.json` - generated automatically from running create_config.py
-- `assistant_app.py` - build app to handle prompt routing logic among the prompts (uses AIConfig). Uses streamlit to create frontend.
-
-### Run with Streamlit
-
-`streamlit run assistant_app.py`
