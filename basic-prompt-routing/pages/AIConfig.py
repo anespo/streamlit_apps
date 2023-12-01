@@ -1,5 +1,5 @@
 import streamlit as st
-from aiconfig import AIConfigRuntime
+import os
 
 # Streamlit Setup
 st.title("AI Config ⚙️")
@@ -18,7 +18,10 @@ st.markdown(
         You can use the SDK to connect AIConfig to your application code. Github: [link]
     """
 )
-path = "assistant_aiconfig.json"
+
+file = "../assistant_aiconfig.json"
+absolute_path = os.path.abspath(file)
+
 code = open(path, 'r').read()
 
 st.code(code, language='json')
