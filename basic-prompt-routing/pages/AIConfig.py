@@ -2,7 +2,7 @@ import streamlit as st
 import os
 
 # Streamlit Setup
-st.title("AI Config ⚙️")
+st.title("AIConfig ⚙️")
 st.markdown(
     """
         AIConfig saves prompts, models and model parameters as source-controlled configs. 
