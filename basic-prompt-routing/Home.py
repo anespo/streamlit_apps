@@ -18,7 +18,7 @@ st.markdown("This is a demo of prompt routing with AIConfig ([Github](https://gi
 
 st.text(
     """
-    1. Ask question with a code snippet. 
+    1. Ask question with a code snippet. Remember to always add code snippet or specify language. 
     2. Router determines coding language and responds with respective prompt template.
     """
 )
