@@ -16,11 +16,11 @@ st.title("GPT4 Prompt Routing Demo 🔀")
 st.subheader("Powered by AIConfig ⚙️")
 st.markdown("This is a demo of prompt routing with AIConfig ([Github](https://github.com/lastmile-ai/aiconfig)). Instructions:")
 
-st.markdown(
+st.text(
     """
-    1. Ask question with a code snippet. Remember to always add a code snippet or specify language. \n
-    2. Router determines coding language and responds with respective prompt template. \n 
-    For the demo, only python, javascript, java prompt templates were created. 
+    1. Ask a question with a code snippet or specify language in your prompt.  
+    For this demo, only python, javascript, java prompt templates were created. 
+    2. Router determines programming language and responds with respective prompt template.
     """
 )
 st.markdown("Try this: `How do I filter a list of numbers to only even numbers in javascript?`")
