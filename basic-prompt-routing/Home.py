@@ -24,7 +24,7 @@ st.text(
     """
 )
 st.markdown("Try this: `How do I filter a list of numbers to only even numbers in javascript?`")
-openai_api_key = st.text_input('First, enter you OpenAI API Key. Uses GPT4.', type='password')
+openai_api_key = st.text_input('First, enter your OpenAI API Key. Uses GPT4.', type='password')
 
 
 # Get assistant response based on user prompt (prompt routing)
