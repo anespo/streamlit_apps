@@ -30,11 +30,11 @@ async def cove():
     st.markdown("### ➡️ Step 1: Generate a numbered list of facts")
     st.markdown("""
         **Example Prompts:**
-        1. Name 10 NBA players with more than 3 MVP (finals or regular season) rings. 
+        1. Name 10 NBA players with more than 3 MVP (finals or regular season) awards. 
         2. Name 15 celebrities born in Toronto, Canada. 
         3. Name 20 programming languages developed in the USA.
     """)
-    prompt = st.text_input(label="Write a prompt to generate a numbered list of 10-20 facts (like examples above).", placeholder="Ex:  Name 10 NBA players with more than 3 MVP (finals or regular season) rings")
+    prompt = st.text_input(label="Write a prompt to generate a numbered list of 10-20 facts (like examples above).", placeholder="Ex:  Name 10 NBA players with more than 3 MVP (finals or regular season) awards.")
     if len(prompt) != 0:
         params = {"baseline_prompt": prompt}
         config.update_parameter("baseline_prompt", prompt)
@@ -47,11 +47,11 @@ async def cove():
         st.markdown("### 💬 Step 2: Validate each fact individually")
         st.markdown("""
             **Example Questions:**
-            1. How many MVP rings does this NBA player have?
+            1. How many MVP awards does this NBA player have?
             2. Where was this celebrity born?
             3. Where was this programming language developed? 
         """)
-        verification_question = st.text_input(label="Enter a verification question to validate each fact. Follow the format below.", placeholder="Ex: How many MVP rings does this NBA player have?")
+        verification_question = st.text_input(label="Enter a verification question to validate each fact. Follow the format below.", placeholder="Ex: How many MVP awards does this NBA player have?")
 
         entities = []
         verification_data = ""
