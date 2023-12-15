@@ -1,18 +1,23 @@
-# GPT4 Prompt Routing Demo
+# Chain-of-Verification Demo
 
-This streamlit app shows prompt routing with AIConfig.
+This streamlit app shows chain-of-verification with AIConfig. 
 Check out AIConfig here: https://github.com/lastmile-ai/aiconfig
 
 Instructions:
-Go to https://prompt-routing.streamlit.app/. 
+Go to https://cove.streamlit.app/. 
+Requires OpenAI Key with GPT-4 accesss. https://platform.openai.com/account/api-keys 
 
-1. Ask question with a code snippet. Try this: How do I filter a list of numbers to only even numbers in javascript?
-2. Router determines coding language and responds with respective prompt template.
+1. Generate a Baseline Response - Ask ChatGPT to generate a numbered list of 10-20 facts. Follow the format below.
+Examples:
+Name 15 celebrities born in Toronto, Canada,
+Name 20 programming languages developed in the United States.
+Name 15 politicians born in New York City.
 
-What is AIConfig? 
-AIConfig saves prompts, models and model parameters as source-controlled configs. 
-This is your generative AI artifact that can easily be shared across any application.
-Use our SDK to connect an AIConfig to your application code. The separation of the generative
-AI components from your application code reduces complexity, increase iteration, and promotes
-better collaboration.
+2. Ask a verification question to validate each entity in the baseline response.
+Examples:
+Where was this celebritity born?
+Where was this programming language developed?
+Where was this politician born?
 
+3. Chain-of-Verification Pipeline Runs!
+Now, you should see the revised results of the baseline response given the validation of facts from Step 2.
