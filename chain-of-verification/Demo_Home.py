@@ -28,7 +28,13 @@ openai_api_key = st.text_input("Enter you OpenAI API Key to begin. Requires GPT-
 # chain-of-verification (cove) pipeline
 async def cove():
     st.markdown("### ➡️ Step 1: Generate a numbered list of facts")
-    prompt = st.text_input(label="Ask ChatGPT to generate a numbered list of 10-20 facts. Follow the format below.", placeholder="Ex: Name 15 celebrities born in Toronto, Canada.")
+    st.markdown("""
+        **Example Prompts:**
+        1. Name 15 celebrities born in Toronto, Canada.
+        2. Name 20 programming languages developed in the USA.
+        3. Name 10 politicians born in New York City.
+    """)
+    prompt = st.text_input(label="Write a prompt to generate a numbered list of 10-20 facts (like examples above).", placeholder="Ex: Name 15 celebrities born in Toronto, Canada.")
     if len(prompt) != 0:
         params = {"baseline_prompt": prompt}
         config.update_parameter("baseline_prompt", prompt)
@@ -62,7 +68,8 @@ async def cove():
 
             st.markdown("### ✅ Step 3: Revise the original response")
             params = {"verification_results": verification_data, "baseline_response_output": baseline_response_text}
-            await config.run("final_response_gen", params)
+            with st.spinner('Running Chain-of-Verification...'):
+                await config.run("final_response_gen", params)
             st.markdown(config.get_output_text("final_response_gen"))
 
 
