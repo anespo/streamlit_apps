@@ -1,0 +1,77 @@
+{
+  "name": "Chain-of-Verification (CoVe)  Template",
+  "schema_version": "latest",
+  "metadata": {
+    "parameters": {
+      "baseline_prompt": "Name 15 celebrities born in Toronto",
+      "verification_question": "Where was this celeb born?: {{entity}}"
+    },
+    "models": {
+      "gpt-4": {
+        "model": "gpt-4",
+        "top_p": 1,
+        "temperature": 0,
+        "presence_penalty": 0,
+        "frequency_penalty": 0
+      }
+    },
+    "default_model": "gpt-4"
+  },
+  "description": "",
+  "prompts": [
+    {
+      "name": "baseline_response_gen",
+      "input": "{{baseline_prompt}}",
+      "metadata": {
+        "model": {
+          "name": "gpt-4",
+          "settings": {
+            "system_prompt": "Return only a numbered list answering the prompt exactly. Do not give explanatory text in the beginning.",
+            "temperature": 0
+          }
+        },
+        "parameters": {
+          "entity": ""
+        },
+        "remember_chat_context": false
+      },
+      "outputs": []
+    },
+    {
+      "name": "verification",
+      "input": "Answer '{{verification_question}}' where entity = {{entity}}.",
+      "metadata": {
+        "model": {
+          "name": "gpt-4",
+          "settings": {
+            "temperature": 0
+          }
+        },
+        "parameters": {
+          "entity": ""
+        },
+        "remember_chat_context": false
+      },
+      "outputs": []
+    },
+    {
+      "name": "final_response_gen",
+      "input": "Cross-check each entity from the 'Baseline Response' against 'Verification Data' to see if the entity meets the precise criteria of the 'Baseline Prompt'. \n\nBaseline prompt: {{baseline_prompt}} \nBaseline response: {{baseline_response_output}}\nVerification data: {{verification_results}}.",
+      "metadata": {
+        "model": {
+          "name": "gpt-4",
+          "settings": {
+            "temperature": 0,
+            "system_prompt": "Output Format: \n\n### Revised Response \n(Please output the accurate response after the cross-check.)\n\n### Failed Entities \nThese are the entities that failed the cross-check. \n(List the entities that failed the cross-check on exact match with a concise reason why)."
+          }
+        },
+        "parameters": {
+          "baseline_response_output": "",
+          "verification_results": ""
+        },
+        "remember_chat_context": false
+      },
+      "outputs": []
+    }
+  ]
+}
