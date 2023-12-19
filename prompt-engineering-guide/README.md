@@ -9,7 +9,7 @@ The playground uses a **prompt template for each strategy** that encompasses the
 * The AIConfig is setup to run with Gemini, gpt-3.5-turbo, gpt-4, PaLM2.
 * In this playground, the prompt templates are used with gpt-4. See [docs](https://aiconfig.lastmileai.dev/docs/basics) to run with the other models.
 
-## Resource
+## Resources
 * [Playground (Streamlit App)](https://openai-prompt-guide.streamlit.app/)
 * [Google Colab](https://colab.research.google.com/drive/15-0MEu6JyFx0hpF88vShjVmt9wOYmTMe#scrollTo=DRxhxoZHD_Ni)
 * [Prompt Templates (aiconfig.json)](https://github.com/tanya-rai-lm/streamlit_apps/blob/main/prompt-engineering-guide/openai_prompt_guide.aiconfig.json)
