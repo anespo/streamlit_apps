@@ -15,7 +15,7 @@ st.markdown(
     """
 )
 
-file = "../prompt-engineering-guide/openai_prompt_guide.aiconfig.json"
+file = "../streamlit_apps/prompt-engineering-guide/openai_prompt_guide.aiconfig.json"
 absolute_path = os.path.abspath(file)
 
 code = open(absolute_path, 'r').read()
