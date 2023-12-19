@@ -48,7 +48,8 @@ async def playground():
         selection = st.selectbox("Experiment with one of the strategies from the guide", ["Select an option", "Write clearer instructions", "Provide reference text", "Split complex tasks into simpler subtasks", "Give the model time to 'think'", "Test changes systematically"])
         
         if selection in strategy_dict:
-            await config.run(strategy_dict[selection], params = {"original_prompt": st.session_state.original_prompt})
+            with st.spinner('Running prompt...'):
+                await config.run(strategy_dict[selection], params = {"original_prompt": st.session_state.original_prompt})
             improved_prompt_details_1 = config.get_output_text(strategy_dict[selection])
             st.markdown(improved_prompt_details_1)
             st.session_state.improved_prompt_details_1 = improved_prompt_details_1
