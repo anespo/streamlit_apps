@@ -11,8 +11,7 @@ st.markdown(
     [AIConfig](https://github.com/lastmile-ai/aiconfig) is an open-source framework for building generative AI applications quickly and reliably in production. You can use the AIConfig SDK (model-agnostic) to run prompts from the AIConfig.
 
     * The AIConfig is setup to run with Gemini, gpt-3.5-turbo, gpt-4, PaLM2.
-    * In this playground, the prompt templates are used with gpt-4. See [docs](https://aiconfig.lastmileai.dev/docs/basics) to run with other models.
-    * See the Google Colab version of this playground [here](https://colab.research.google.com/drive/15-0MEu6JyFx0hpF88vShjVmt9wOYmTMe#scrollTo=fLpCYI-Gt-9Q)
+    * In this playground, the prompt templates are used with gpt-3.5-turbo. See [docs](https://aiconfig.lastmileai.dev/docs/basics) to run with other models.
 
     Download the AIConfig [here](https://github.com/tanya-rai-lm/streamlit_apps/blob/main/prompt-engineering-guide/openai_prompt_guide.aiconfig.json)
     """
