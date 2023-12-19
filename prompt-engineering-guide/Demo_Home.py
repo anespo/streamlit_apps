@@ -31,11 +31,11 @@ strategy_dict = {
     "Test changes systematically": "systematic_testing"
 }
 
-openai_api_key = st.text_input("Enter you OpenAI API Key to begin. Requires GPT-4:  🔑", type="password")
+openai_api_key = st.text_input("Enter you OpenAI API Key to begin. Uses gpt-3.5-turbo:  🔑", type="password")
 
 # playground setup
 async def playground():
-    st.markdown("#### ➡️ Step 1: Enter a prompt")
+    st.markdown("#### 💬 Step 1: Enter a prompt")
     
     if 'original_prompt' not in st.session_state:
         st.session_state.original_prompt = ""
@@ -43,7 +43,7 @@ async def playground():
     st.session_state.original_prompt = st.text_input(label="This is your baseline prompt", value=st.session_state.original_prompt, placeholder="Ex:  write a satirical poem on AI")
 
     if st.session_state.original_prompt:
-        st.markdown("#### ➡️ Step 2: Select a Strategy from the Guide")
+        st.markdown("#### 🧪 Step 2: Select a Strategy from the Guide")
         
         selection = st.selectbox("Experiment with one of the strategies from the guide", ["Select an option", "Write clearer instructions", "Provide reference text", "Split complex tasks into simpler subtasks", "Give the model time to 'think'", "Test changes systematically"])
         
@@ -51,15 +51,16 @@ async def playground():
             await config.run(strategy_dict[selection], params = {"original_prompt": st.session_state.original_prompt})
             improved_prompt_details_1 = config.get_output_text(strategy_dict[selection])
             st.markdown(improved_prompt_details_1)
-            st.session_state.improved_prompt_details_1 = improved_prompt_details_1
 
-            if st.session_state.improved_prompt_details_1:
-                st.markdown("#### ➡️ Step 3: Run the improved prompt")
-                if st.button("Run improved prompt"):
-                    with st.spinner('Running prompt...'):
-                        await config.run("run_improved_prompt", params={"improved_prompt": re.search(r"(?i)Improved Prompt\s*(.*)", st.session_state.improved_prompt_details_1).group(1)})
-                    improved_response = config.get_output_text("run_improved_prompt")
-                    st.write(improved_response)
+            st.markdown("#### 💡 Step 3: Run the improved prompt")
+            prompt = re.search(r"(?si)Improved Prompt\s*(.*)", improved_prompt_details_1).group(1)
+            st.markdown("##### Improved Prompt:")
+            st.write(prompt)
+            st.write("")
+            st.markdown("##### Improved Prompt Response:")
+            await config.run("run_improved_prompt", params={"improved_prompt": prompt})
+            improved_response = config.get_output_text("run_improved_prompt")
+            st.write(improved_response)
 
 # aiconfig setup 
 if openai_api_key:
