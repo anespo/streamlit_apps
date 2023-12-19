@@ -2,7 +2,8 @@ import streamlit as st
 import os
 
 # Streamlit Setup
-st.title("Prompt Templates ⚙️")
+title = '<p style="font-family:Helvetica; font-size: 35px;"> Prompt Templates </p>'
+st.markdown(title, unsafe_allow_html=True)
 st.markdown(
     """
     The playground uses a **prompt template for each strategy** that encompasses the specific tactics and examples for that strategy. Given a baseline prompt, the prompt template will return an improved prompt based on the strategy. You can also run the improved prompt to see the response. The prompt templates are stored in an **AIConfig** - a JSON-serializable config to manage prompts, models, and model settings.
@@ -12,6 +13,8 @@ st.markdown(
     * The AIConfig is setup to run with Gemini, gpt-3.5-turbo, gpt-4, PaLM2.
     * In this playground, the prompt templates are used with gpt-4. See [docs](https://aiconfig.lastmileai.dev/docs/basics) to run with other models.
     * See the Google Colab version of this playground [here](https://colab.research.google.com/drive/15-0MEu6JyFx0hpF88vShjVmt9wOYmTMe#scrollTo=fLpCYI-Gt-9Q)
+
+    Download the AIConfig [here](https://github.com/tanya-rai-lm/streamlit_apps/blob/main/prompt-engineering-guide/openai_prompt_guide.aiconfig.json)
     """
 )
 
