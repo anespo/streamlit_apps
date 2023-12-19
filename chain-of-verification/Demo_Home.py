@@ -28,7 +28,13 @@ openai_api_key = st.text_input("Enter you OpenAI API Key to begin. Requires GPT-
 # chain-of-verification (cove) pipeline
 async def cove():
     st.markdown("### ➡️ Step 1: Generate a numbered list of facts")
-    prompt = st.text_input(label="Ask ChatGPT to generate a numbered list of 10-20 facts. Follow the format below.", placeholder="Ex: Name 15 celebrities born in Toronto, Canada.")
+    st.markdown("""
+        **Example Prompts:**
+        1. Name 10 NBA players with more than 3 MVP (finals or regular season) awards. 
+        2. Name 15 celebrities born in Toronto, Canada. 
+        3. Name 20 programming languages developed in the USA.
+    """)
+    prompt = st.text_input(label="Write a prompt to generate a numbered list of 10-20 facts (like examples above).", placeholder="Ex:  Name 10 NBA players with more than 3 MVP (finals or regular season) awards.")
     if len(prompt) != 0:
         params = {"baseline_prompt": prompt}
         config.update_parameter("baseline_prompt", prompt)
@@ -39,7 +45,13 @@ async def cove():
         st.write(baseline_response_text)
 
         st.markdown("### 💬 Step 2: Validate each fact individually")
-        verification_question = st.text_input(label="Enter a verification question to validate each fact. Follow the format below.", placeholder="Ex: Where was this celebrity born?")
+        st.markdown("""
+            **Example Questions:**
+            1. How many MVP awards does this NBA player have?
+            2. Where was this celebrity born?
+            3. Where was this programming language developed? 
+        """)
+        verification_question = st.text_input(label="Enter a verification question to validate each fact. Follow the format below.", placeholder="Ex: How many MVP awards does this NBA player have?")
 
         entities = []
         verification_data = ""
@@ -62,7 +74,8 @@ async def cove():
 
             st.markdown("### ✅ Step 3: Revise the original response")
             params = {"verification_results": verification_data, "baseline_response_output": baseline_response_text}
-            await config.run("final_response_gen", params)
+            with st.spinner('Running Chain-of-Verification...'):
+                await config.run("final_response_gen", params)
             st.markdown(config.get_output_text("final_response_gen"))
 
 
