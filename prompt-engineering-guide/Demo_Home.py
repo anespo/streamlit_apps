@@ -31,8 +31,7 @@ strategy_dict = {
     "Test changes systematically": "systematic_testing"
 }
 
-openai_api_key = "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"
-# openai_api_key = st.text_input("Enter you OpenAI API Key to begin. Requires GPT-4:  🔑", type="password")
+openai_api_key = st.text_input("Enter you OpenAI API Key to begin. Requires GPT-4:  🔑", type="password")
 
 # playground setup
 async def playground():
